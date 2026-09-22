@@ -1,0 +1,42 @@
+# Document collections to index.
+#
+#   type: local   a folder of .md / .txt / .pdf files
+#   type: remote  PDFs downloaded from public URLs
+#   private: true the folder must be git-ignored or outside the repository;
+#                 ingestion refuses to run otherwise
+#
+# Only the first two collections ship with the repository. Nothing here comes from
+# any company's internal documentation.
+
+collections:
+  - name: plant-docs
+    type: local
+    path: corpus/planta-los-almendros
+    description: >
+      Synthetic technical documentation of a fictional 50 MWp PV plant: O&M manual,
+      inverter datasheet, SCADA alarm codes, tracker maintenance, commissioning,
+      cleaning procedure, incident report, monthly report, grid requirements.
+
+  - name: regulation
+    type: remote
+    description: Public Spanish electricity-sector legislation (BOE consolidated texts).
+    documents:
+      - id: ley-24-2013
+        title: "Ley 24/2013, del Sector Eléctrico"
+        url: "https://www.boe.es/buscar/pdf/2013/BOE-A-2013-13645-consolidado.pdf"
+      - id: rd-413-2014
+        title: "Real Decreto 413/2014, producción renovable, cogeneración y residuos"
+        url: "https://www.boe.es/buscar/pdf/2014/BOE-A-2014-6123-consolidado.pdf"
+      - id: rd-244-2019
+        title: "Real Decreto 244/2019, autoconsumo de energía eléctrica"
+        url: "https://www.boe.es/buscar/pdf/2019/BOE-A-2019-5089-consolidado.pdf"
+      - id: rd-1183-2020
+        title: "Real Decreto 1183/2020, acceso y conexión a las redes"
+        url: "https://www.boe.es/buscar/pdf/2020/BOE-A-2020-17278-consolidado.pdf"
+
+  # Your own documents. data/ is git-ignored, so nothing placed here is ever committed.
+  # Uncomment to index them alongside the public collections.
+  # - name: private
+  #   type: local
+  #   path: data/private
+  #   private: true

@@ -1,0 +1,10 @@
+# Vertex AI: Gemini for generation and gemini-embedding-001 for retrieval
+# (EMBEDDING_BACKEND=vertex, LLM_BACKEND=vertex). langchain-google-genai replaces the
+# deprecated VertexAIEmbeddings / ChatVertexAI classes and still runs on Vertex AI.
+langchain-google-genai>=4.0
+# Generation with OpenAI (LLM_BACKEND=openai)
+langchain-openai>=0.2
+# Local multilingual embeddings (EMBEDDING_BACKEND=sentence-transformers)
+sentence-transformers>=2.6
+# Exact inner-product index, used automatically above 1,000 chunks
+faiss-cpu>=1.8

@@ -1,0 +1,151 @@
+# Hand-written evaluation set. Each question is labelled with the document that
+# should answer it (or a list, only where more than one document genuinely states
+# the answer, e.g. a threshold repeated in the datasheet and the alarm codes), so retrieval can be scored without a human in the loop.
+#
+# Questions are phrased the way an engineer would ask them, deliberately NOT
+# copying the wording of the documents, so lexical overlap alone does not
+# guarantee a hit. Questions whose document is not indexed are skipped and
+# reported as such.
+
+questions:
+  # --- plant-docs (synthetic corpus, always available) -----------------------
+  - question: "¿Qué hago si el inversor da un fallo de aislamiento por la mañana con rocío?"
+    expected_doc_id: 03-codigos-alarma-scada
+    expected_section: "E101"
+  - question: "¿Cada cuánto hay que cambiar los filtros de aire del inversor central?"
+    expected_doc_id: [02-datasheet-inversor-sv3150, 01-manual-om]
+  - question: "¿A partir de qué temperatura ambiente empieza el inversor a recortar potencia?"
+    expected_doc_id: [02-datasheet-inversor-sv3150, 03-codigos-alarma-scada]
+  - question: "¿Cuál es el rango de tensión MPPT del inversor a potencia nominal?"
+    expected_doc_id: 02-datasheet-inversor-sv3150
+    expected_section: "Entrada DC"
+  - question: "¿Con qué velocidad de viento se ponen los seguidores en horizontal para protegerse?"
+    expected_doc_id: [04-mantenimiento-seguidores, 03-codigos-alarma-scada]
+  - question: "¿Qué consumo de motor del seguidor se considera anormal?"
+    expected_doc_id: [04-mantenimiento-seguidores, 03-codigos-alarma-scada]
+  - question: "¿Qué grasa se usa para los rodamientos de los seguidores y cuánta se pone?"
+    expected_doc_id: 04-mantenimiento-seguidores
+    expected_section: "Mantenimiento preventivo semestral"
+  - question: "¿Por qué los seguidores reducen el ángulo a primera hora de la mañana?"
+    expected_doc_id: 04-mantenimiento-seguidores
+    expected_section: "backtracking"
+  - question: "¿Qué tolerancia se admite en la tensión de circuito abierto de los strings durante la puesta en marcha?"
+    expected_doc_id: 05-protocolo-puesta-en-marcha
+    expected_section: "circuito abierto"
+  - question: "¿Cuánto dura la prueba de rendimiento para la recepción provisional y qué PR hay que alcanzar?"
+    expected_doc_id: 05-protocolo-puesta-en-marcha
+    expected_section: "Prueba de rendimiento"
+  - question: "¿Qué valor máximo de resistencia de tierra se exige en las estaciones de potencia?"
+    expected_doc_id: 05-protocolo-puesta-en-marcha
+    expected_section: "puesta a tierra"
+  - question: "¿Cuándo hay que programar una campaña de limpieza de paneles?"
+    expected_doc_id: [06-procedimiento-limpieza-modulos, 08-informe-mensual-2024-06]
+  - question: "¿Qué calidad de agua hay que usar para lavar los módulos?"
+    expected_doc_id: 06-procedimiento-limpieza-modulos
+    expected_section: "Limpieza con agua"
+  - question: "¿Por qué se fundían los fusibles de string en el bloque 12?"
+    expected_doc_id: 07-informe-incidencia-2024-03
+    expected_section: "causa raíz"
+  - question: "¿Qué medidas preventivas se tomaron tras el problema de los conectores mal crimpados?"
+    expected_doc_id: 07-informe-incidencia-2024-03
+    expected_section: "Acciones preventivas"
+  - question: "¿Cuánta energía se exportó en junio de 2024 y qué PR se obtuvo?"
+    expected_doc_id: 08-informe-mensual-2024-06
+    expected_section: "Resumen del mes"
+  - question: "¿Por qué estuvo parado el inversor del bloque 7 más de 48 horas?"
+    expected_doc_id: 08-informe-mensual-2024-06
+    expected_section: "bloque 7"
+  - question: "¿Cuál es el objetivo anual de performance ratio de la planta?"
+    expected_doc_id: 01-manual-om
+    expected_section: "Indicadores clave"
+  - question: "¿Qué repuestos mínimos debe haber en el almacén?"
+    expected_doc_id: 01-manual-om
+    expected_section: "Mantenimiento correctivo"
+  - question: "¿Qué reglas de seguridad se aplican antes de intervenir en un inversor?"
+    expected_doc_id: 01-manual-om
+    expected_section: "Seguridad y consignación"
+  - question: "¿Qué rampa máxima de variación de potencia aplica el controlador de planta?"
+    expected_doc_id: 09-requisitos-conexion-red
+    expected_section: "Controlador de planta"
+  - question: "¿Qué factor de potencia tiene que poder dar la planta en el punto de conexión?"
+    expected_doc_id: 09-requisitos-conexion-red
+    expected_section: "potencia reactiva"
+
+  # --- estudios previos, tramitación, construcción y calidad -------------------
+  - question: "¿A qué profundidad aparece la costra calcárea y en qué zona de la parcela?"
+    expected_doc_id: [10-estudio-geotecnico, 17-no-conformidad-nc-2023-041]
+  - question: "¿Cuál es el criterio de aceptación del ensayo de carga lateral de los perfiles?"
+    expected_doc_id: 10-estudio-geotecnico
+    expected_section: "hinca de prueba"
+  - question: "¿Qué pendiente máxima en dirección norte-sur admite el seguidor?"
+    expected_doc_id: 11-estudio-topografico-hidrologico
+    expected_section: "Pendientes"
+  - question: "¿Para qué periodo de retorno se dimensionan las cunetas de los viales?"
+    expected_doc_id: [11-estudio-topografico-hidrologico, 13-memoria-obra-civil]
+  - question: "¿Qué autorizaciones hay que conseguir para construir y poner en servicio la planta?"
+    expected_doc_id: 12-proyecto-tecnico-administrativo
+    expected_section: "Objeto del proyecto"
+  - question: "¿Qué condiciones impuso la declaración de impacto ambiental sobre el vallado?"
+    expected_doc_id: [12-proyecto-tecnico-administrativo, 13-memoria-obra-civil]
+  - question: "¿A qué organismos se envían separatas del proyecto?"
+    expected_doc_id: 12-proyecto-tecnico-administrativo
+    expected_section: "Separatas"
+  - question: "¿Qué grado de compactación tiene que alcanzar la zahorra de los viales?"
+    expected_doc_id: 13-memoria-obra-civil
+    expected_section: "Viales"
+  - question: "¿A qué profundidad van las zanjas de media tensión cuando cruzan un vial?"
+    expected_doc_id: 13-memoria-obra-civil
+    expected_section: "Zanjas de cableado"
+  - question: "¿Qué se hace cuando un perfil da rechazo durante la hinca?"
+    expected_doc_id: [14-procedimiento-hincado-pilotes, 17-no-conformidad-nc-2023-041]
+  - question: "¿Qué tolerancia de verticalidad se admite en los perfiles hincados?"
+    expected_doc_id: 14-procedimiento-hincado-pilotes
+    expected_section: "Tolerancias"
+  - question: "¿Qué es un punto de parada en el programa de puntos de inspección?"
+    expected_doc_id: 15-ppi-hincado-montaje-estructura
+    expected_section: "tipos de punto"
+  - question: "¿Con qué frecuencia se hacen ensayos de compactación del relleno de las zanjas?"
+    expected_doc_id: 16-ppi-zanjas-cableado
+    expected_section: "obra civil de zanjas"
+  - question: "¿Qué cambió en la revisión 2 del PPI de cableado y por qué?"
+    expected_doc_id: 16-ppi-zanjas-cableado
+    expected_section: "Historial de revisiones"
+  - question: "¿Por qué hubo tantos rechazos en la hinca de la zona norte?"
+    expected_doc_id: 17-no-conformidad-nc-2023-041
+    expected_section: "Análisis de causa"
+  - question: "¿Cuántos días de retraso provocó la no conformidad de la hinca?"
+    expected_doc_id: 17-no-conformidad-nc-2023-041
+    expected_section: "Impacto"
+
+  # --- regulation (public BOE PDFs, downloaded by `energy-rag ingest`) -------
+  - question: "¿Qué es el autoconsumo colectivo y qué requisitos deben cumplir los consumidores asociados?"
+    expected_doc_id: rd-244-2019
+  - question: "¿Cómo se calcula la compensación simplificada de excedentes de autoconsumo?"
+    expected_doc_id: rd-244-2019
+  - question: "¿Qué plazo tiene el gestor de la red para emitir los permisos de acceso y conexión?"
+    expected_doc_id: rd-1183-2020
+  - question: "¿Qué garantías económicas hay que presentar para solicitar acceso a la red de transporte?"
+    expected_doc_id: rd-1183-2020
+  - question: "¿Qué parámetros retributivos se aplican a las instalaciones tipo de generación renovable?"
+    expected_doc_id: rd-413-2014
+  - question: "¿Qué es la rentabilidad razonable de una instalación tipo y cómo se revisa?"
+    expected_doc_id: rd-413-2014
+  - question: "¿Cuáles son las funciones del operador del sistema eléctrico?"
+    expected_doc_id: ley-24-2013
+  - question: "¿Qué actividades del sector eléctrico están sujetas a régimen regulado y cuáles se ejercen en libre competencia?"
+    expected_doc_id: ley-24-2013
+
+# Questions the corpus cannot answer. The system should abstain on these rather
+# than return the "closest" passage. The last five are deliberately near-domain:
+# they share real vocabulary with the plant documents.
+unanswerable:
+  - "¿Cuál es la receta del pulpo a la gallega?"
+  - "¿Quién ganó la liga de fútbol en 2023?"
+  - "¿Cómo configuro una VPN en Windows?"
+  - "¿Cuántos empleados tiene la empresa propietaria?"
+  - "¿Cómo se calcula el IVA de una factura?"
+  - "¿Cuál es el precio de la electricidad mañana en el mercado?"
+  - "¿Qué turbina eólica tiene la planta?"
+  - "¿Qué garantía tienen las baterías de almacenamiento?"
+  - "¿Cuántos trabajadores había en obra en el pico de la construcción?"
+  - "¿Qué dice el plan de seguridad y salud sobre los trabajos en altura?"

@@ -1,0 +1,15 @@
+[project]
+name = "energy-docs-rag"
+version = "0.2.0"
+description = "RAG over solar PV technical documentation and Spanish electricity regulation, with LangChain, Vertex AI and retrieval evaluation"
+requires-python = ">=3.10"
+
+[project.scripts]
+energy-rag = "energy_rag.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
