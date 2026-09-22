@@ -202,7 +202,7 @@ building an index; FAISS is used automatically above 1,000 chunks, if installed.
 ## Quickstart
 
 ```bash
-git clone https://github.com/<your-user>/energy-docs-rag.git
+git clone https://github.com/<javierc9199>/energy-docs-rag.git
 cd energy-docs-rag
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt -r requirements-optional.txt && pip install -e .
